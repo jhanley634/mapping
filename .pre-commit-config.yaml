@@ -1,6 +1,8 @@
 
 # After cloning repo, install hooks with:
 #
+#     $ brew install pre-commit
+#
 #     $ pre-commit install
 
 repos:
