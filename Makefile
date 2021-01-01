@@ -21,7 +21,10 @@
 ACTIVATE = source activate mapping
 
 all:
-	true
+	$(ACTIVATE) && flake8
+
+isort:
+	$(ACTIVATE) && isort --ff=yes us/
 
 po:
 	$(ACTIVATE) && us/zip/po.py

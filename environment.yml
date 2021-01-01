@@ -12,4 +12,5 @@ dependencies:
   - ruamel.yaml >= 0.16.12
   - sqlalchemy >= 1.3.21
   - pip:
+#     - sqlalchemy >= 1.4.0b1  # uszipcode is not yet ready for the new sqlalchemy
       - uszipcode >= 0.2.4

@@ -18,7 +18,8 @@
 # arising from, out of or in connection with the software or the use or
 # other dealings in the software.
 
-import uszipcode
+import sqlalchemy as sa
+import uszipcode.search
 
 
 class PostalMapper:
@@ -26,6 +27,16 @@ class PostalMapper:
     def __init__(self):
         self.search = uszipcode.search.SearchEngine()
 
+    def get_big_cities(self, min_pop=1e5):
+        select = '''SELECT    zipcode, population, lat, lng, major_city
+                    FROM      simple_zipcode
+                    WHERE     population >= :min_pop
+                    ORDER BY  population DESC
+        '''
+        rows = self.search.ses.execute(sa.text(select), dict(min_pop=min_pop))
+        for row in rows:
+            print(dict(row))
+
 
 if __name__ == '__main__':
-    PostalMapper()
+    PostalMapper().get_big_cities()
