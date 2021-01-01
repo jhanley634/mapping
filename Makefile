@@ -20,7 +20,9 @@
 
 ACTIVATE = source activate mapping
 
-all:
+all: lint
+
+lint:
 	$(ACTIVATE) && flake8
 
 isort:
